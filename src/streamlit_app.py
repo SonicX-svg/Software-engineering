@@ -3,9 +3,7 @@ import streamlit as st
 import numpy as np
 import time
 import pickle
-import sklearn
 import pandas as pd
-import random
 import os
 import sys
 from pathlib import Path
@@ -75,9 +73,9 @@ def predict(var_name):
 # function to run streamlit app
 def run():
     st.title("Cancer breast Test App")
-
     info = inputs()
     dia_score = predict(info)
+    st.download_button("Download medical conclusion", f'info: {info} \ndia_score: {dia_score}')
     with st.spinner(text="Diagnosing....."):
         time.sleep(5)
     if dia_score == 1:
