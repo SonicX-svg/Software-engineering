@@ -6,6 +6,8 @@ import pickle
 import sklearn
 import pandas as pd
 import random
+import os
+import sys
 from pathlib import Path
 
 # Расчёт пути к родительской директории
