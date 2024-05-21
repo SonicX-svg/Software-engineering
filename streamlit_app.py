@@ -1,6 +1,5 @@
 # importing important libraries
 import streamlit as st
-import model 
 import numpy as np
 import time
 import pickle
