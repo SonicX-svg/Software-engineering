@@ -6,8 +6,16 @@ import pickle
 import sklearn
 import pandas as pd
 import random
+from pathlib import Path
 
-data = pd.read_csv("breast_cancer.csv")
+# Расчёт пути к родительской директории
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Проверка наличия родительской директории в sys.path
+if parent_dir not in sys.path:
+    sys.path.append(parent_dir)
+
+data = pd.read_csv("data/breast_cancer.csv")
 # Open the PKL file
 with open("model/neigh_model.pkl", "rb") as f:
     knn_model = pickle.load(f)
@@ -15,6 +23,7 @@ with open("model/neigh_model.pkl", "rb") as f:
 # column name for each feature in the diabetes dataset.
 column_names = data.columns
 print(column_names, len(column_names))
+
 
 # function to receive users' information.
 def inputs():
@@ -56,7 +65,6 @@ def inputs():
 # function to create a data frame and carry out prediction.
 def predict(var_name):
     pred = [var_name]
-    print("list ========", pred)
     np_pred = np.array(pred)
     score = knn_model.predict(np_pred)
     return score
