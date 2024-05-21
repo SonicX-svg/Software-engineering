@@ -1,3 +1,25 @@
+commit 4a5e34e44bf424f7c944837a22e4ba4943f563d5
+Author: SonicX-svg <143742185+SonicX-svg@users.noreply.github.com>
+Date:   Tue May 21 17:50:24 2024 +0300
+
+    Update README.md
+    
+    add more detailed description
+
+diff --git a/README.md b/README.md
+index 1881991..930b0d0 100644
+--- a/README.md
++++ b/README.md
+@@ -1,4 +1,9 @@
+ # Software-engineering
+ ## <ins> Код улучшен с использованием форматера black и общим структурированием проекта. </ins> <br>
++1. Оформлен по стандарту PEP8 (black)
++2. Имеет осмысленные переменные
++3. Код функционально структурирован
++4. Проект также имеет структуру
++-----
+ Web-приложение предсказания рака груди на основе набора данных Breast_cancer и модели knn. <br>
+ Приложение доступно по ссылке: https://software-engineering-peffhxxvxl4u4euk59q5hj.streamlit.app/
 # importing important libraries
 import streamlit as st
 import numpy as np
