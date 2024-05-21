@@ -5,16 +5,18 @@ import time
 import pickle
 import sklearn
 import pandas as pd
-import random 
+import random
 
-data =pd.read_csv('breast_cancer.csv')
+data = pd.read_csv("breast_cancer.csv")
 # Open the PKL file
-with open('model/neigh_model.pkl', 'rb') as f:
+with open("model/neigh_model.pkl", "rb") as f:
     knn_model = pickle.load(f)
-    
+
 # column name for each feature in the diabetes dataset.
 column_names = data.columns
 print(column_names, len(column_names))
+
+
 # function to receive users' information.
 def inputs():
     # creating the form for data inputs.
@@ -35,19 +37,32 @@ def inputs():
         worst_concavity = st.number_input(label="worst_concavity: ")
         submit = st.form_submit_button("Submit Test")
         if submit:
-            patient_data = [worst_concave_points, worst_perimeter, mean_concave_points, worst_radius, mean_perimeter, worst_area, mean_radius, mean_area, mean_concavity, worst_concavity]
+            patient_data = [
+                worst_concave_points,
+                worst_perimeter,
+                mean_concave_points,
+                worst_radius,
+                mean_perimeter,
+                worst_area,
+                mean_radius,
+                mean_area,
+                mean_concavity,
+                worst_concavity,
+            ]
         else:
             patient_data = [0 for i in range(10)]
     return patient_data
 
+
 # function to create a data frame and carry out prediction.
 def predict(var_name):
     pred = [var_name]
-    print('list ========', pred)
+    print("list ========", pred)
     np_pred = np.array(pred)
     score = knn_model.predict(np_pred)
     return score
-    
+
+
 # function to run streamlit app
 def run():
     st.title("Cancer breast Test App")
@@ -60,6 +75,7 @@ def run():
         st.error("Positive. Cancer Diagnosed.")
     else:
         st.success("Negative. Cancer not diagnosed.")
+
 
 # running streamlit app.
 if __name__ == "__main__":
